@@ -60,6 +60,15 @@
 
 - Use Conventional Commits for all commit messages and pull request titles (`feat:`,
   `fix:`, `refactor:`, `test:`, `docs:`, `chore:`, `build:`).
+- Commit atomically: every commit must be a focused, self-contained, logical unit of
+  change (code, tests, and documentation). Do not combine unrelated fixes,
+  refactoring, and features in the same commit. Every commit must leave the codebase
+  in a passing, buildable state.
+- Keep branches linear via rebase: always update feature branches with
+  `git fetch origin && git rebase origin/main`. Never create merge commits into
+  working branches. If a branch has diverged significantly or rebase conflicts become
+  tangled, start a clean branch from `origin/main` and cleanly reapply the modifications
+  instead of wrestling with an error-prone rebase.
 - Inspect the relevant code and existing tests before editing; reuse existing
   patterns rather than introducing a parallel abstraction.
 - After changes, run the relevant tests, then lint, formatting, type checks, and

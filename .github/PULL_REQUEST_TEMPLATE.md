@@ -27,6 +27,8 @@ Exemples :
 ## Vérifications
 
 - [ ] Le titre de la PR suit la spécification Conventional Commits
+- [ ] Les commits sont atomiques et auto-suffisants
+- [ ] La branche est rebasée sur `main` (aucun commit de merge intermédiaire)
 - [ ] Tests unitaires ou de composants ajoutés/mis à jour si nécessaire
 - [ ] `bun run lint`
 - [ ] `bun run format:check`

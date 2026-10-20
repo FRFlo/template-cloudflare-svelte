@@ -8,10 +8,26 @@
 - N’ajoutez jamais de secrets, de données réelles ou de fichiers générés au
   dépôt.
 
-## Modifications
+## Modifications et stratégie Git
 
 - Consultez `AGENTS.md` pour les conventions techniques du projet.
-- Utilisez la spécification Conventional Commits (`feat:`, `fix:`, `refactor:`, `test:`, `docs:`, `chore:`, `build:`) pour tous les messages de commit et titres de pull request.
+- **Conventional Commits :** utilisez impérativement la spécification
+  Conventional Commits (`feat:`, `fix:`, `refactor:`, `test:`, `docs:`,
+  `chore:`, `build:`) pour tous les commits et titres de pull request.
+- **Commits atomiques :** chaque commit doit représenter un changement unitaire,
+  cohérent et complet (code, tests et documentation associés). Chaque commit
+  doit laisser le projet dans un état compilable et vert (`check`, `lint` et
+  `test`). Ne mélangez pas refactorisation, formatage et nouvelle fonctionnalité
+  dans un même commit.
+- **Politique de synchronisation (rebase vs refaire les modifications) :**
+  - **Rebase obligatoire :** maintenez votre branche à jour exclusivement via
+    `git rebase origin/main`. Les commits de merge intermédiaires (`Merge branch
+    'main' into ...`) sont proscrits.
+  - **Refaire les modifications :** si votre branche diverge fortement, que
+    l'historique est brouillon ou que les conflits de rebase s'avèrent
+    complexes/risqués, ne perdez pas de temps à forcer un rebase instable :
+    recréez une branche propre depuis le dernier `origin/main` et réappliquez vos
+    modifications (via un report propre des fichiers modifiés ou cherry-pick).
 - Pour toute modification de comportement, appliquez le TDD : écrivez d’abord
   un test qui échoue, puis l’implémentation minimale et enfin les tests de
   régression.
