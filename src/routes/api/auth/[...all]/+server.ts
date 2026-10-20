@@ -1,10 +1,12 @@
 import type { RequestHandler } from "./$types";
 import { Effect } from "effect";
 import { handleAuthRequest } from "#lib/server/auth";
-import { runWithCloudflareEnv } from "#lib/server/effect";
+import { getCloudflareEnvironment, runWithCloudflareEnv } from "#lib/server/effect";
 
 const handle: RequestHandler = async ({ request, platform }) => {
-	if (!platform?.env) {
+	const cloudflareEnv = getCloudflareEnvironment(platform?.env);
+
+	if (!cloudflareEnv) {
 		return new Response("Cloudflare environment is unavailable", { status: 500 });
 	}
 
@@ -13,7 +15,7 @@ const handle: RequestHandler = async ({ request, platform }) => {
 		return Effect.succeed(new Response("Internal Server Error", { status: 500 }));
 	});
 
-	return runWithCloudflareEnv(platform.env, program);
+	return runWithCloudflareEnv(cloudflareEnv, program);
 };
 
 export const GET = handle;

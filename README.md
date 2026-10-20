@@ -46,16 +46,16 @@ bunx wrangler d1 migrations apply template-cloudflare-svelte --local
 
 ## Développement
 
-Lancer le serveur de développement SvelteKit classique :
-
-```sh
-bun run dev:vite
-```
-
-Lancer l'aperçu sous l'environnement d'exécution Cloudflare Workers local :
+Lancer le serveur de développement avec HMR et émulation des bindings Cloudflare (Wrangler / D1) :
 
 ```sh
 bun run dev
+```
+
+Pour tester le bundle de production généré sous le runtime Worker local (`workerd`) :
+
+```sh
+bun run preview
 ```
 
 ## Vérification et tests

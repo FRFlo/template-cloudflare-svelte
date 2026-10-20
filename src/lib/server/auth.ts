@@ -8,7 +8,7 @@ export function createAuth(env: Env & { BETTER_AUTH_SECRET: string; BETTER_AUTH_
 		...withCloudflare(
 			{
 				d1Native: env.DATABASE,
-				autoDetectIpAddress: true,
+				autoDetectIpAddress: false,
 				geolocationTracking: false,
 			},
 			{

@@ -4,8 +4,7 @@
 	"version": "0.0.1",
 	"type": "module",
 	"scripts": {
-		"dev": "wrangler types --check && vite build && wrangler dev .svelte-kit/cloudflare/_worker.js --port 4173",
-		"dev:vite": "vite dev",
+		"dev": "wrangler types --check && vite dev",
 		"build": "bun run paraglide:compile && svelte-kit sync && vite build",
 		"preview": "wrangler dev .svelte-kit/cloudflare/_worker.js --port 4173",
 		"prepare": "svelte-kit sync || echo ''",

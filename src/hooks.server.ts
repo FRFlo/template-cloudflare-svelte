@@ -3,7 +3,7 @@ import { sequence } from "@sveltejs/kit/hooks";
 import { getTextDirection } from "#lib/paraglide/runtime";
 import { paraglideMiddleware } from "#lib/paraglide/server";
 import { getSession } from "#lib/server/auth";
-import { runWithCloudflareEnv } from "#lib/server/effect";
+import { getCloudflareEnvironment, runWithCloudflareEnv } from "#lib/server/effect";
 import { Effect } from "effect";
 
 const handleParaglide: Handle = ({ event, resolve }) =>
@@ -20,7 +20,9 @@ const handleParaglide: Handle = ({ event, resolve }) =>
 	});
 
 const handleAuth: Handle = async ({ event, resolve }) => {
-	if (!event.platform?.env) {
+	const cloudflareEnv = getCloudflareEnvironment(event.platform?.env);
+
+	if (!cloudflareEnv) {
 		event.locals.session = null;
 		event.locals.user = null;
 		return resolve(event);
@@ -31,7 +33,7 @@ const handleAuth: Handle = async ({ event, resolve }) => {
 		return Effect.succeed(null);
 	});
 
-	const sessionData = await runWithCloudflareEnv(event.platform.env, sessionProgram);
+	const sessionData = await runWithCloudflareEnv(cloudflareEnv, sessionProgram);
 
 	event.locals.session = sessionData?.session ?? null;
 	event.locals.user = sessionData?.user ?? null;
