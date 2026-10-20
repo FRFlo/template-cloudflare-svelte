@@ -60,6 +60,14 @@ bun run dev
 
 ## Vérification et tests
 
+Les types des bindings Cloudflare sont générés localement par Wrangler et ne
+sont pas versionnés. Après un nouveau clone ou une modification de
+`wrangler.jsonc`, générez-les avant les vérifications TypeScript :
+
+```sh
+bun run gen
+```
+
 ```sh
 bun run lint
 bun run format:check
