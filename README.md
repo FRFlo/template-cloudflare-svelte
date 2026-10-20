@@ -36,7 +36,7 @@ cp .dev.vars.example .dev.vars
   openssl rand -base64 32
   ```
 
-- `BETTER_AUTH_URL` : URL locale (`http://127.0.0.1:4173`).
+- `BETTER_AUTH_URL` : URL locale (`http://localhost:5173`).
 
 Appliquez les migrations initiales Better Auth sur la base D1 locale :
 
