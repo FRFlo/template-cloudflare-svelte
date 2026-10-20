@@ -1,7 +1,7 @@
 {
 	"$schema": "./node_modules/oxlint/configuration_schema.json",
 	"plugins": [],
-	"jsPlugins": ["eslint-plugin-svelte"],
+	"jsPlugins": ["eslint-plugin-svelte", "@shadcn/lint"],
 	"categories": {
 		"correctness": "warn"
 	},
@@ -89,7 +89,7 @@
 				"no-inner-declarations": "off",
 				"no-self-assign": "off"
 			},
-			"jsPlugins": ["eslint-plugin-svelte"]
+			"jsPlugins": ["eslint-plugin-svelte", "@shadcn/lint"]
 		}
 	]
 }
