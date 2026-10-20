@@ -70,6 +70,10 @@ bun run test:e2e:install
 bun run test:e2e
 ```
 
+Les tests Playwright vérifient les pages, les métadonnées SEO, `robots.txt` et
+le sitemap. Ils ne valident pas l’authentification : aucun parcours utilisateur
+de connexion ou d’inscription n’est encore fourni par ce template.
+
 ## Premier provisionnement et déploiement Cloudflare
 
 Lors de la création d'un nouveau projet à partir de ce template, suivez ces étapes pour configurer et déployer votre environnement distant sur Cloudflare :
