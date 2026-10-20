@@ -30,7 +30,12 @@ Copiez `.dev.vars.example` vers `.dev.vars` et renseignez les valeurs de dévelo
 cp .dev.vars.example .dev.vars
 ```
 
-- `BETTER_AUTH_SECRET` : chaîne aléatoire sécurisée d'au moins 32 caractères.
+- `BETTER_AUTH_SECRET` : chaîne aléatoire sécurisée d'au moins 32 caractères. Vous pouvez en générer une avec OpenSSL :
+
+  ```sh
+  openssl rand -base64 32
+  ```
+
 - `BETTER_AUTH_URL` : URL locale (`http://127.0.0.1:4173`).
 
 Appliquez les migrations initiales Better Auth sur la base D1 locale :
