@@ -8,7 +8,7 @@ Template GitHub pour applications SvelteKit déployées sur Cloudflare Workers a
 - **Plateforme :** [Cloudflare Workers](https://workers.cloudflare.com/) + [Cloudflare D1](https://developers.cloudflare.com/d1/)
 - **Authentification :** [Better Auth](https://www.better-auth.com/) avec plugin D1 (`better-auth-cloudflare`)
 - **Architecture serveur :** [Effect](https://effect.website/) pour la gestion des services contextuels de requête
-- **Style :** [Tailwind CSS v4](https://tailwindcss.com/) (`@tailwindcss/vite`)
+- **Style & Icônes :** [Tailwind CSS v4](https://tailwindcss.com/) (`@tailwindcss/vite`) + [Lucide Icons](https://lucide.dev/guide/svelte/) (`@lucide/svelte`)
 - **Internationalisation :** [Paraglide JS](https://inlang.com/m/gerre34r/library-inlang-paraglideJs)
 - **Qualité de code :** [Oxlint](https://oxc.rs/docs/guide/usage/linter.html) & [Oxfmt](https://oxc.rs/)
 - **Tests :** [Vitest](https://vitest.dev/) (unitaires & composants navigateur) + [Playwright](https://playwright.dev/) (e2e)
