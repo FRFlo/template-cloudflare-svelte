@@ -1,0 +1,16 @@
+{
+	"name": "Template Cloudflare Svelte",
+	"short_name": "Cloudflare Svelte",
+	"description": "Template SvelteKit 5 sur Cloudflare Workers avec Better Auth, D1 et Effect",
+	"start_url": "/",
+	"display": "standalone",
+	"background_color": "#0a0a0a",
+	"theme_color": "#0a0a0a",
+	"icons": [
+		{
+			"src": "/favicon.svg",
+			"sizes": "any",
+			"type": "image/svg+xml"
+		}
+	]
+}
