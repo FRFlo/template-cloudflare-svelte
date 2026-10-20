@@ -34,11 +34,11 @@ jobs:
       - name: Vérifier le formatage
         run: bun run format:check
 
-      - name: Générer les types Cloudflare
-        run: bun run gen
-
       - name: Compiler le projet
         run: bun run build
+
+      - name: Générer les types Cloudflare
+        run: bun run gen
 
       - name: Vérifier les types
         run: bun run check
