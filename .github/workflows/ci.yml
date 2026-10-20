@@ -1,0 +1,50 @@
+name: Intégration continue
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  quality:
+    name: Qualité, tests et compilation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Récupérer le dépôt
+        uses: actions/checkout@v4
+
+      - name: Installer Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.4.2
+
+      - name: Installer les dépendances
+        run: bun install --frozen-lockfile
+
+      - name: Vérifier le lint
+        run: bun run lint
+
+      - name: Vérifier le formatage
+        run: bun run format:check
+
+      - name: Compiler le projet
+        run: bun run build
+
+      - name: Vérifier les types
+        run: bun run check
+
+      - name: Installer Chromium
+        run: bunx playwright install --with-deps chromium
+
+      - name: Exécuter les tests unitaires
+        run: bun run test:unit -- --run
+
+      - name: Exécuter les tests de bout en bout
+        run: bun run test:e2e

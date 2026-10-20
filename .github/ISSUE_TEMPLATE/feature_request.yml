@@ -1,0 +1,24 @@
+name: Proposer une évolution
+description: Suggérer une amélioration ou une nouvelle fonctionnalité.
+title: "[Évolution] : "
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problème à résoudre
+      description: Quel besoin ou quelle difficulté cette proposition adresse-t-elle ?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposition
+      description: Décrivez la solution que vous aimeriez voir.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives envisagées
+    validations:
+      required: false

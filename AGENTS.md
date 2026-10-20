@@ -1,0 +1,65 @@
+# Project instructions
+
+## Tooling
+
+- Use **Bun** for dependency management and project scripts (`bun add`, `bunx`,
+  `bun run`). Do not use npm or yarn.
+- Run `bun run lint` and `bun run format:check` before finishing code changes.
+  Apply formatting with `bun run format`.
+- Useful checks: `bun run build`, `bun run check`, and `bun run test:unit -- --run`.
+- Use TDD for behavior changes: write a failing test first, implement the
+  smallest change that passes, then run the relevant test suite.
+- Add unit tests for changed business logic and component tests for changed UI.
+  Cover meaningful success, failure, and edge cases; do not add tests that only
+  mirror implementation details.
+
+## Architecture
+
+- This is a SvelteKit app deployed to Cloudflare Workers with
+  `@sveltejs/adapter-cloudflare`.
+- Use the `#lib` / `#lib/*` import aliases for `src/lib`; prefer them over
+  relative imports that cross feature directories.
+- Keep server-side workflows in Effect. Define request-scoped dependencies in
+  `src/lib/server/effect.ts`, compose work as Effects, and execute them with
+  `runWithCloudflareEnv`.
+- Represent expected failures in the Effect error channel, map external
+  exceptions at integration boundaries, and handle errors deliberately at HTTP
+  boundaries. Keep side effects inside Effects; avoid running Effects from
+  module initialization.
+- Cloudflare bindings are request-scoped. Never keep a module-level runtime or
+  service that captures a request's `env`, D1 binding, or execution context.
+- Use Svelte 5 runes and existing project conventions in `.oxfmtrc.json` and
+  `.oxlintrc.json`.
+- Keep components focused and move reusable domain behavior into `src/lib`.
+  Prefer semantic HTML, accessible names and keyboard behavior, and responsive
+  layouts. Follow the existing Tailwind CSS 4 setup in `src/routes/layout.css`.
+- Keep TypeScript strict; avoid `any`, unsafe casts, and duplicated domain
+  types. Use the configured aliases for cross-directory imports and keep
+  changes focused on the requested behavior.
+
+## Authentication and Cloudflare
+
+- Better Auth is served from `/api/auth/*`; its configuration lives in
+  `src/lib/server/auth.ts`. Client helpers live in `src/lib/auth-client.ts`.
+- D1 is bound as `DATABASE` and named in `wrangler.jsonc`. Put schema changes in
+  `migrations/`; do not edit or expose credentials in source.
+- Local secrets belong in `.dev.vars` (ignored by Git); use
+  `.dev.vars.example` as the template. Production secrets are configured on
+  Cloudflare.
+- Regenerate Worker binding types after Wrangler configuration changes with
+  `bun run gen`.
+
+## Localization
+
+- Paraglide settings are in `project.inlang/settings.json`; French (`fr-fr`) is
+  the base locale.
+- Keep translated messages in `messages/` and use generated Paraglide APIs
+  rather than hard-coded locale routing.
+
+## Change workflow
+
+- Inspect the relevant code and existing tests before editing; reuse existing
+  patterns rather than introducing a parallel abstraction.
+- After changes, run the relevant tests, then lint, formatting, type checks, and
+  a production build when applicable. Report any failing check and distinguish
+  pre-existing issues from regressions.

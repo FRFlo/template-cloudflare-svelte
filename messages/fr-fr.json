@@ -1,0 +1,5 @@
+{
+	"$schema": "https://inlang.com/schema/inlang-message-format",
+	"app_title": "Template Cloudflare Svelte",
+	"app_description": "Socle SvelteKit sur Cloudflare Workers avec Better Auth, D1, Effect, Tailwind CSS 4 et Paraglide."
+}
