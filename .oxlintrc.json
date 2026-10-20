@@ -39,6 +39,7 @@
 		"**/.gitnexus",
 		"test-results/",
 		"**/.opencode/",
+		".agents/**",
 		"src/lib/paraglide/**",
 		"worker-configuration.d.ts"
 	],
