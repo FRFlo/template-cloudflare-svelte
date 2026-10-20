@@ -44,12 +44,6 @@ Appliquez les migrations initiales Better Auth sur la base D1 locale :
 bunx wrangler d1 migrations apply template-cloudflare-svelte --local
 ```
 
-Pour la production :
-
-```sh
-bunx wrangler d1 migrations apply template-cloudflare-svelte --remote
-```
-
 ## Développement
 
 Lancer le serveur de développement SvelteKit classique :
@@ -74,6 +68,70 @@ bun run check
 bun run test:unit -- --run
 bun run test:e2e:install
 bun run test:e2e
+```
+
+## Premier provisionnement et déploiement Cloudflare
+
+Lors de la création d'un nouveau projet à partir de ce template, suivez ces étapes pour configurer et déployer votre environnement distant sur Cloudflare :
+
+### 1. Renommer le projet et créer la base D1 distante
+
+1. Modifiez le champ `"name"` dans `package.json` et `wrangler.jsonc` avec le nom de votre projet.
+2. Créez votre base de données D1 sur votre compte Cloudflare :
+
+   ```sh
+   bunx wrangler d1 create <nom-de-votre-base>
+   ```
+
+3. Notez le `database_id` retourné par la commande et reportez-le dans `wrangler.jsonc` :
+
+   ```jsonc
+   "d1_databases": [
+     {
+       "binding": "DATABASE",
+       "database_name": "<nom-de-votre-base>",
+       "database_id": "<database_id_retourné_par_wrangler>",
+       "migrations_dir": "migrations"
+     }
+   ]
+   ```
+
+### 2. Configurer les secrets de production
+
+1. Générez un secret fort pour Better Auth en production :
+
+   ```sh
+   openssl rand -base64 32
+   ```
+
+2. Enregistrez-le comme secret de Worker sur Cloudflare :
+
+   ```sh
+   bunx wrangler secret put BETTER_AUTH_SECRET
+   ```
+
+3. Configurez l'URL finale de votre domaine de production dans le Worker :
+
+   ```sh
+   bunx wrangler secret put BETTER_AUTH_URL
+   # ou ajoutez-le dans la section "vars" de wrangler.jsonc si l'URL est publique
+   ```
+
+### 3. Appliquer les migrations sur la base distante
+
+Exécutez les migrations D1 sur l'instance distante Cloudflare :
+
+```sh
+bunx wrangler d1 migrations apply <nom-de-votre-base> --remote
+```
+
+### 4. Déployer le Worker
+
+Compilez l'application puis déployez sur Cloudflare Workers :
+
+```sh
+bun run build
+bunx wrangler deploy
 ```
 
 ## Architecture serveur & Effect
