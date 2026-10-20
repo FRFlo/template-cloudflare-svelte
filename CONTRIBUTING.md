@@ -11,6 +11,7 @@
 ## Modifications
 
 - Consultez `AGENTS.md` pour les conventions techniques du projet.
+- Utilisez la spécification Conventional Commits (`feat:`, `fix:`, `refactor:`, `test:`, `docs:`, `chore:`, `build:`) pour tous les messages de commit et titres de pull request.
 - Pour toute modification de comportement, appliquez le TDD : écrivez d’abord
   un test qui échoue, puis l’implémentation minimale et enfin les tests de
   régression.

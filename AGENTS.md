@@ -58,6 +58,8 @@
 
 ## Change workflow
 
+- Use Conventional Commits for all commit messages and pull request titles (`feat:`,
+  `fix:`, `refactor:`, `test:`, `docs:`, `chore:`, `build:`).
 - Inspect the relevant code and existing tests before editing; reuse existing
   patterns rather than introducing a parallel abstraction.
 - After changes, run the relevant tests, then lint, formatting, type checks, and

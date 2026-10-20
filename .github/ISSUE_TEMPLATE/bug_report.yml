@@ -1,11 +1,12 @@
 name: Signaler un bogue
-description: Signaler un problème reproductible.
-title: "[Bogue] : "
+description: Signaler un problème reproductible sous format conventionnel.
+title: "fix: "
 body:
   - type: markdown
     attributes:
       value: |
         Merci de décrire le problème avec assez de détails pour le reproduire.
+        Le titre doit commencer par `fix: ` ou `fix(scope): `.
   - type: textarea
     id: description
     attributes:
