@@ -1,5 +1,7 @@
 {
 	"$schema": "https://inlang.com/schema/inlang-message-format",
 	"app_title": "Cloudflare Svelte Template",
-	"app_description": "SvelteKit foundation on Cloudflare Workers with Better Auth, D1, Effect, Tailwind CSS 4, and Paraglide."
+	"app_description": "SvelteKit foundation on Cloudflare Workers with Better Auth, D1, Effect, Tailwind CSS 4, and Paraglide.",
+	"error_title": "An error occurred",
+	"error_back_home": "Back to home"
 }
