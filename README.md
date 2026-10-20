@@ -1,6 +1,6 @@
 # template-cloudflare-svelte
 
-Template GitHub privé pour applications SvelteKit déployées sur Cloudflare Workers avec base de données D1, Better Auth, Effect, Tailwind CSS 4 et Paraglide.
+Template GitHub pour applications SvelteKit déployées sur Cloudflare Workers avec base de données D1, Better Auth, Effect, Tailwind CSS 4 et Paraglide.
 
 ## Stack technique
 
