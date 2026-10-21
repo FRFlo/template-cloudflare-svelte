@@ -1,0 +1,186 @@
+{
+	"schemaVersion": 2,
+	"generatedAt": "2026-10-20T09:36:47.818Z",
+	"title": "Design System: fivedash",
+	"extensions": {
+		"colorMeta": {
+			"primary": {
+				"role": "primary",
+				"displayName": "Bleu d’action",
+				"canonical": "#245fc7",
+				"tonalRamp": [
+					"#123066",
+					"#19418a",
+					"#2052ae",
+					"#2763d2",
+					"#3e7ae0",
+					"#6b99e9",
+					"#9db9f1",
+					"#d2e0fa"
+				]
+			},
+			"neutral-bg": {
+				"role": "neutral",
+				"displayName": "Fond clair",
+				"canonical": "#f4f6f9",
+				"tonalRamp": [
+					"#25272a",
+					"#43464a",
+					"#62666b",
+					"#81868c",
+					"#a0a6ad",
+					"#c0c7ce",
+					"#dfe6ee",
+					"#f4f6f9"
+				]
+			},
+			"neutral-ink": {
+				"role": "neutral",
+				"displayName": "Encre ardoise",
+				"canonical": "#152033",
+				"tonalRamp": [
+					"#111a2a",
+					"#263044",
+					"#3d475b",
+					"#545e72",
+					"#6c768a",
+					"#858fa3",
+					"#a0aabc",
+					"#bbc5d6"
+				]
+			},
+			"neutral-border": {
+				"role": "neutral",
+				"displayName": "Bordure froide",
+				"canonical": "#dce2eb",
+				"tonalRamp": [
+					"#202328",
+					"#3e434a",
+					"#5d636d",
+					"#7d8490",
+					"#9da5b2",
+					"#bdc6d4",
+					"#dce2eb",
+					"#f4f6f9"
+				]
+			}
+		},
+		"typographyMeta": {
+			"display": {
+				"displayName": "Display",
+				"purpose": "Titre principal de l’accueil."
+			},
+			"body": {
+				"displayName": "Texte courant",
+				"purpose": "Paragraphes, descriptions et contenu de formulaire."
+			}
+		},
+		"shadows": [
+			{
+				"name": "auth-panel",
+				"value": "0 1.25rem 3.5rem rgb(19 32 54 / 9%)",
+				"purpose": "Séparer doucement le panneau d’authentification du fond."
+			},
+			{
+				"name": "selected-mode",
+				"value": "0 1px 3px rgb(19 32 54 / 12%)",
+				"purpose": "Marquer le mode de formulaire sélectionné."
+			}
+		],
+		"motion": [
+			{
+				"name": "action-feedback",
+				"value": "140ms ease",
+				"purpose": "Transition de couleur et léger déplacement du bouton au survol."
+			}
+		],
+		"breakpoints": [
+			{
+				"name": "single-column",
+				"value": "760px"
+			},
+			{
+				"name": "compact-header",
+				"value": "420px"
+			}
+		]
+	},
+	"components": [
+		{
+			"name": "Bouton principal",
+			"kind": "button",
+			"refersTo": "button-primary",
+			"description": "Action d’authentification principale, avec focus visible.",
+			"html": "<button class=\"ds-button\">Se connecter</button>",
+			"css": ".ds-button { min-height: 3rem; padding: 0.7rem 1rem; border: 1px solid transparent; border-radius: 0.6rem; background: #245fc7; color: #fff; font: inherit; font-weight: 650; cursor: pointer; transition: background-color 140ms ease, transform 140ms ease; } .ds-button:hover:not(:disabled) { background: #174da9; transform: translateY(-1px); } .ds-button:focus-visible { outline: 3px solid #1c65d1; outline-offset: 2px; } .ds-button:disabled { cursor: wait; opacity: 0.7; }"
+		},
+		{
+			"name": "Champ de saisie",
+			"kind": "input",
+			"refersTo": "input",
+			"description": "Champ pleine largeur avec contour et focus clavier.",
+			"html": "<input class=\"ds-input\" aria-label=\"Adresse courriel\" type=\"email\" />",
+			"css": ".ds-input { width: 100%; min-height: 2.9rem; padding: 0.65rem 0.8rem; border: 1px solid #cbd4e0; border-radius: 0.55rem; background: #fff; color: #152033; font: inherit; } .ds-input:focus-visible { outline: 3px solid #1c65d1; outline-offset: 2px; }"
+		},
+		{
+			"name": "Sélecteur de mode",
+			"kind": "nav",
+			"refersTo": "mode-switch",
+			"description": "Bascule entre les modes connexion et création de compte.",
+			"html": "<div class=\"ds-switch\"><button class=\"ds-switch-active\">Connexion</button><button>Créer un compte</button></div>",
+			"css": ".ds-switch { display: grid; grid-template-columns: 1fr 1fr; gap: 0.25rem; padding: 0.25rem; border-radius: 0.7rem; background: #f0f3f7; } .ds-switch button { min-height: 2.5rem; border: 0; border-radius: 0.5rem; background: transparent; color: #5d6b80; font: inherit; font-size: 0.9rem; font-weight: 600; cursor: pointer; } .ds-switch button:focus-visible { outline: 3px solid #1c65d1; outline-offset: 2px; } .ds-switch .ds-switch-active { background: #fff; color: #152033; box-shadow: 0 1px 3px rgb(19 32 54 / 12%); }"
+		},
+		{
+			"name": "Panneau d’authentification",
+			"kind": "card",
+			"refersTo": "auth-panel",
+			"description": "Surface unique qui regroupe le parcours d’authentification.",
+			"html": "<section class=\"ds-panel\"><h2>Connexion à fivedash</h2><p>Formulaire d’accès</p></section>",
+			"css": ".ds-panel { width: min(100%, 28rem); padding: 2rem; border: 1px solid #dce2eb; border-radius: 1rem; background: #fff; color: #152033; box-shadow: 0 1.25rem 3.5rem rgb(19 32 54 / 9%); } .ds-panel h2 { margin: 0 0 1.5rem; font-size: 1.25rem; font-weight: 650; letter-spacing: -0.025em; }"
+		},
+		{
+			"name": "Badge de version",
+			"kind": "chip",
+			"refersTo": "release-label",
+			"description": "Libellé secondaire du bandeau supérieur.",
+			"html": "<span class=\"ds-badge\">Première version</span>",
+			"css": ".ds-badge { display: inline-flex; align-items: center; padding: 0.35rem 0.65rem; border: 1px solid #dce2eb; border-radius: 999px; color: #5d6b80; font: inherit; font-size: 0.82rem; font-weight: 600; }"
+		},
+		{
+			"name": "Repère de portée",
+			"kind": "custom",
+			"refersTo": "scope-note",
+			"description": "Séparateur et texte de contexte sous l’introduction.",
+			"html": "<div class=\"ds-scope\"><span class=\"ds-scope-mark\" aria-hidden=\"true\"></span><div><strong>Un espace pensé pour l’administration</strong><p>Les outils de gestion sont en préparation.</p></div></div>",
+			"css": ".ds-scope { display: flex; gap: 1rem; align-items: flex-start; padding-top: 1.25rem; border-top: 1px solid #dce2eb; color: #152033; font: inherit; } .ds-scope-mark { width: 0.7rem; height: 0.7rem; flex: 0 0 auto; margin-top: 0.4rem; border-radius: 50%; background: #245fc7; box-shadow: 0 0 0 0.3rem color-mix(in srgb, #245fc7 15%, transparent); } .ds-scope p { margin: 0.45rem 0 0; color: #5d6b80; font-size: 0.9rem; line-height: 1.65; }"
+		}
+	],
+	"narrative": {
+		"northStar": "Portail d’accès opérationnel",
+		"overview": "Cette formule décrit la page d’accès actuellement implémentée ; elle ne constitue pas une métaphore de marque confirmée. L’interface privilégie une lecture immédiate, des libellés directs et un parcours centré sur la connexion ou la création de compte. Le système est adaptatif : les surfaces et textes passent d’une palette claire à une palette sombre selon la préférence du système. Un bleu d’action distingue les actions principales et les repères de focus.",
+		"keyCharacteristics": [
+			"Portail d’accès plutôt que tableau de bord.",
+			"Thème clair ou sombre selon le système.",
+			"Accent bleu fonctionnel sur des surfaces neutres.",
+			"Formulaire regroupé dans un panneau avec profondeur discrète."
+		],
+		"rules": [
+			{
+				"name": "The Theme Pair Rule",
+				"body": "Toute couleur de rôle affichée dans les deux thèmes garde une variante claire et une variante sombre ; le thème suit la préférence système.",
+				"section": "colors"
+			}
+		],
+		"dos": [
+			"Do conserver un focus clavier nettement visible.",
+			"Do garder les actions d’authentification explicites et étiquetées.",
+			"Do respecter la préférence de thème du système.",
+			"Do préserver la mise en colonne unique sous 760px."
+		],
+		"donts": [
+			"Don't présenter cette page d’accès comme un tableau de bord serveur déjà fonctionnel.",
+			"Don't ajouter une navigation de gestion ou des indicateurs opérationnels sans implémentation correspondante.",
+			"Don't employer le bleu d’action comme couleur de texte courant."
+		]
+	}
+}
