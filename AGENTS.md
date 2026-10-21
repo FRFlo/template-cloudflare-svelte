@@ -69,6 +69,19 @@ Project skills are vendored in `.agents/skills/`:
   for frontend craft, `/animate` and `/animation-performance` for 60fps transitions,
   `/mobile-native` for touch interactions, and `/break-ui` for edge-case stress testing.
 
+## UI component craft
+
+- When creating, importing, or modifying a UI component, adapt library defaults
+  to the project's design tokens and visual language before shipping it.
+- Re-evaluate motion for every UI change. Use `animate` and `apple-design` for
+  animation work: motion needs a clear purpose, must respect interaction
+  frequency, remain interruptible where relevant, and support reduced motion.
+- Prefer short, compositor-friendly transitions for state feedback and
+  trigger-anchored popovers. Use semantic colors, spacing, typography, focus
+  styles, and surface tokens.
+- Keep UI accessible and responsive: support keyboard operation, meaningful
+  accessible names, touch-sized targets, and high-contrast considerations.
+
 ## Change workflow
 
 - Use Conventional Commits for all commit messages and pull request titles (`feat:`,
