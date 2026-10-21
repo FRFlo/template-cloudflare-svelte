@@ -22,6 +22,16 @@ Installez les dépendances avec Bun :
 bun install
 ```
 
+## Personnalisation rapide du projet avec une IA
+
+Ce template inclut un protocole d'onboarding complet pour les agents IA dans [SETUP.md](./SETUP.md).
+
+Pour configurer automatiquement l'ensemble de votre projet (nom, identité de marque, couleurs, typographies, langues, authentification), copiez-collez simplement ce prompt dans votre assistant IA (ChatGPT, Claude, Cursor, Copilot, Hermes) :
+
+```text
+Lis SETUP.md et aide-moi à configurer ce projet en me posant toutes les questions de personnalisation nécessaires, puis applique les changements.
+```
+
 ## Configuration locale et base de données
 
 Copiez `.dev.vars.example` vers `.dev.vars` et renseignez les valeurs de développement :
