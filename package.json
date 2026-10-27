@@ -57,7 +57,7 @@
 	},
 	"dependencies": {
 		"@lucide/svelte": "^1.60.0",
-		"better-auth": "^1.7.11",
+		"better-auth": "^1.7.12",
 		"better-auth-cloudflare": "^0.4.1",
 		"effect": "^4.0.5"
 	}
